@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find my_guardy)/launch/spawn_guardy.launch"/>
+    <include file="$(find my_guardy)/launch/controller_guardy.launch"/>
+</launch>

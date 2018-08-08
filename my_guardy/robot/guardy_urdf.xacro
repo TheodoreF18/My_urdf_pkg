@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="guardy">
+    <xacro:property name="m" value="0.01" />
+    <xacro:property name="head_z_origin" value="0.02" />
+    <xacro:property name="upperleg_M1_z_origin" value="0.02" />
+    <xacro:property name="head_radius" value="0.05" />
+    <xacro:property name="head_length" value="0.04" />
+    <xacro:property name="upperleg_radius" value="0.0025" />
+    <xacro:property name="upperleg_length" value="0.06" />
+    <xacro:property name="head_ixx" value="${(m/12.0)*(3*head_radius*head_radius+head_length*head_length))}" />
+    <xacro:property name="head_iyy" value="${head_ixx}" />
+    <xacro:property name="head_izz" value="${(m*head_radius*head_radius)/2.0}" />
+    
+    <xacro:macro name="default_origin">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:macro>
+    
+    <xacro:macro name="head_geometry" params="head_dae_path">
+        <geometry>
+            <mesh filename="${head_dae_path}"/>
+        </geometry>
+    </xacro:macro>
+    
+    <link name="head_link">
+ 	    <inertial>
+            <origin xyz="0 0 ${head_z_origin}" rpy="0 0 0"/>
+            <mass value="${m}" />
+            <inertia ixx="${head_ixx}" ixy="0.0" ixz="0.0" iyy="${head_iyy}" iyz="0.0" izz="${head_izz}"/>
+        </inertial>
+        <collision>
+            <origin xyz="0 0 ${head_z_origin}" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="${head_radius}" length="${head_length}"/>
+            </geometry>
+        </collision>
+        <visual>
+            <xacro:default_origin />
+            <xacro:head_geometry head_dae_path="package://gurdy_description/models/gurdy/meshes/gurdy_head_v2.dae"/>
+        </visual>
+	</link>
+    
+    <link name="upperleg_M1_link">
+ 	    <inertial>
+            <origin xyz="0 0 ${upperleg_M1_z_origin}" rpy="0 0 0"/>
+            <mass value="${m}" />
+            <inertia ixx="3.015625e-05" ixy="0.0" ixz="0.0" iyy="3.015625e-05" iyz="0.0" izz="3.125e-07"/>
+        </inertial>
+        <collision>
+            <origin xyz="0 0 ${upperleg_M1_z_origin}" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="${upperleg_length}" radius="${upperleg_radius}"/>
+            </geometry>
+        </collision>
+        <visual>
+            <origin rpy="0.0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://gurdy_description/models/gurdy/meshes/gurdy_higherleg_v2.dae"/>
+            </geometry>
+        </visual>
+	</link>
+	
+</robot>
+  

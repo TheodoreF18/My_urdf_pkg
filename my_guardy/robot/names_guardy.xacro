@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="L01" value="base_link" />
+    <xacro:property name="L02" value="head_link" />
+    <xacro:property name="L03" value="upperleg_M1_link" />
+    <xacro:property name="L04" value="upperleg_M2_link" />
+    <xacro:property name="L05" value="upperleg_M3_link" />
+    <xacro:property name="L06" value="lower_legM1_link" />
+    <xacro:property name="L07" value="lower_legM2_link" />
+    <xacro:property name="L08" value="lower_legM3_link" />
+    <xacro:property name="L09" value="footM1_link" />
+    <xacro:property name="L10" value="footM2_link" />
+    <xacro:property name="L11" value="footM3_link" />
+</robot>

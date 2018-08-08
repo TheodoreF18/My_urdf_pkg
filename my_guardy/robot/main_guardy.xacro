@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="guardy">
+    
+    <!--include-->
+    <xacro:include filename="$(find my_guardy)/robot/names_guardy.xacro" />
+    <xacro:include filename="$(find my_guardy)/robot/joints_links_trans.xacro" />
+    <!--include-->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/guardy</robotNamespace>
+        </plugin>
+    </gazebo>
+    <!--Macros-->
+    <all_links_cylinder name='${L02}' org_xyz='0 0 0.02' org_rpy='0 0 0'
+                        geo_radius='0.05' geo_lenght='0.04'/>
+    
+    
+    
+    
+    
+</robot>
